@@ -15,6 +15,17 @@ export default defineConfigWithVueTs(
     files: ['**/*.{vue,ts,mts,tsx}'],
   },
 
+  {
+    name: 'app/vue-3-settings',
+    settings: {
+      'vue/version': '3.0.0',
+    },
+    rules: {
+      // This rule is for Vue 2 only. Vue 3 supports multiple template root nodes.
+      'vue/no-multiple-template-root': 'off',
+    },
+  },
+
   globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
   ...pluginVue.configs['flat/essential'],
