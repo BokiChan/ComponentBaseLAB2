@@ -18,6 +18,8 @@ defineProps<{
   padding: 10px 20px;
   font-size: 14px;
   border: 1px solid #39495c;
+  width: 180px;        /* add this */
+  box-sizing: border-box;
 }
 
 .event-metadata p {
