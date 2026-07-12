@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import EventCard from '@/components/EventCard.vue'
+  import EventMetadata from '@/components/EventMetadata.vue'
   import type { Event } from '@/types'
   import { ref } from 'vue'
   const events = ref<Event[]>([
@@ -41,7 +42,10 @@
 
 <template>
   <div class="events">
-    <EventCard v-for="event in events" :key="event.id" :event="event" />
+    <div class="event-wrapper" v-for="event in events" :key="event.id">
+      <EventCard :event="event" />
+      <EventMetadata :event="event"/>
+    </div>
   </div>
 </template>
 
@@ -50,5 +54,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .event-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 10px;
+
   }
 </style>

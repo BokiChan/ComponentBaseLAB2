@@ -7,12 +7,12 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/">Home</RouterLink> | 
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
     </header>
-
+    <h1>Event For Good</h1>
     <RouterView />
   </div>
 </template>
@@ -24,6 +24,10 @@ import { RouterLink, RouterView } from 'vue-router'
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+nav {
+  padding: 30px;
 }
 
 h2 {
