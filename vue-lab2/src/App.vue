@@ -7,12 +7,11 @@ import { RouterLink, RouterView } from 'vue-router'
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Home</RouterLink> | 
+          <RouterLink to="/">Event</RouterLink> | 
           <RouterLink to="/about">About</RouterLink>
         </nav>
       </div>
     </header>
-    <h1>Event For Good</h1>
     <RouterView />
   </div>
 </template>
