@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
+
+const pageSize = ref(2)
+
+function changePageSize(newPageSize: number) {
+  pageSize.value = newPageSize
+}
 </script>
+
 
 <template>
   <div id="layout">
@@ -13,7 +21,15 @@ import { RouterLink, RouterView } from 'vue-router'
         </nav>
       </div>
     </header>
-    <RouterView />
+    <div>
+      <button @click="changePageSize(1)">1 per page</button>
+      <button @click="changePageSize(2)">2 per page</button>
+      <button @click="changePageSize(3)">3 per page</button>
+      <button @click="changePageSize(4)">4 per page</button>
+      <button @click="changePageSize(5)">5 per page</button>
+      <button @click="changePageSize(6)">6 per page</button>
+    </div>
+    <RouterView :page-size="pageSize"  />
   </div>
 </template>
 
