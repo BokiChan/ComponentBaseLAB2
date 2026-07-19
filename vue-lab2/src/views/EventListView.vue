@@ -21,7 +21,7 @@
 <template>
   <h1>Event For Good</h1>
   <div class="events">
-    <div class="event-wrapper" v-for="event in events" :key="event.id">
+    <div class="event-wrapper" v-for="event in events || []" :key="event.id">
       <EventCard :event="event" />
       <EventMetadata :event="event"/>
     </div>
