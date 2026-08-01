@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
+import { useMessageStore } from '@/stores/message'
+import { storeToRefs } from 'pinia'
+const store = useMessageStore()
+const { message } = storeToRefs(store)
 
 const pageSize = ref(2)
 
@@ -13,6 +17,9 @@ function changePageSize(newPageSize: number) {
 <template>
   <div id="layout">
     <header>
+      <div id="flashMessage" v-if="message">
+        <h4>{{ message }}</h4>
+      </div>
       <div class="wrapper">
         <nav>
           <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> | 
@@ -58,4 +65,16 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
   }
+
+@keyframes yellowFade {
+  from {
+    background-color: yellow;
+  }
+  to {
+    background-color: transparent;
+  }
+}
+#flashMessage {
+  animation: yellowFade 3s ease-in-out;
+}
 </style>
