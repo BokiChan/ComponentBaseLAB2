@@ -2,7 +2,12 @@
 
 @theme {
     --shadow-sp: 0 3px 12px 0 rgba(0, 0, 0, 0.2);
+    --font-sans: Avenir, Helvetica, Arial, sans-serif;
 
 }
 /* --shadow-sp create the utility shadow-sp Tailwind maps the 
 --shadow-* namespace to box-shadow utilities. */
+
+h1 {
+    @apply text-4xl mb-8;
+}
