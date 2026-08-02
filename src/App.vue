@@ -11,6 +11,11 @@ const pageSize = ref(2)
 function changePageSize(newPageSize: number) {
   pageSize.value = newPageSize
 }
+
+function handlePageSizeChange(event: Event) {
+  const target = event.target as HTMLSelectElement
+  changePageSize(Number(target.value))
+}
 </script>
 
   <!-- Center the content horizontally and vertically -->
@@ -37,7 +42,7 @@ function changePageSize(newPageSize: number) {
     </header>
 
     <div>
-      <select @change="changePageSize($event.target.value)">
+      <select @change="handlePageSizeChange">
         <option value="1">1 per page</option>
         <option value="2">2 per page</option>
         <option value="3">3 per page</option>
