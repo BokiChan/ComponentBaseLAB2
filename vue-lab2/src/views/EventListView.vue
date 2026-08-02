@@ -45,13 +45,13 @@
       <EventMetadata :event="event"/>
     </div>
     <div class="pagination">
-      <RouterLink id="page-prev"
+      <RouterLink class="text-left"
       :to="{ name: 'event-list-view', query: { page: page - 1 } }"
       rel="prev"
       v-if="page != 1"
       >&#60; Previous Page </RouterLink>
 
-      <RouterLink id="page-next"
+      <RouterLink class="text-right"
       :to="{ name: 'event-list-view', query: { page: page + 1 } }"
       rel="next"
       v-if="hasNextPage"
@@ -82,11 +82,4 @@
     color: #2c3e50;
   }
 
-  #page-prev {
-    text-align: left;
-  }
-
-  #page-next {
-    text-align: right;
-  }
 </style>

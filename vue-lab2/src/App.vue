@@ -20,7 +20,7 @@ function changePageSize(newPageSize: number) {
 <template>
   <div class="text-center font-sans text-gray-700 antialiased">
     <header>
-      <div id="flashMessage" v-if="message">
+      <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
       </div>
       <div class="wrapper">
@@ -64,16 +64,5 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
   }
-
-@keyframes yellowFade {
-  from {
-    background-color: yellow;
-  }
-  to {
-    background-color: transparent;
-  }
-}
-#flashMessage {
-  animation: yellowFade 3s ease-in-out;
-}
+  
 </style>
