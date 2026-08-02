@@ -24,30 +24,33 @@ function changePageSize(newPageSize: number) {
         <h4>{{ message }}</h4>
       </div>
       <div class="wrapper">
-        <nav>
-          <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> | 
-          <RouterLink :to="{ name: 'about' }">About</RouterLink> | 
-          <RouterLink :to="{ name: 'student-info' }">Student Info</RouterLink>
+
+        <nav class="py-6">
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
+          :to="{ name: 'event-list-view' }">Event</RouterLink> | 
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
+          :to="{ name: 'about' }">About</RouterLink> | 
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
+          :to="{ name: 'student-info' }">Student Info</RouterLink>
         </nav>
       </div>
     </header>
+
     <div>
-      <button @click="changePageSize(1)">1 per page</button>
-      <button @click="changePageSize(2)">2 per page</button>
-      <button @click="changePageSize(3)">3 per page</button>
-      <button @click="changePageSize(4)">4 per page</button>
-      <button @click="changePageSize(5)">5 per page</button>
-      <button @click="changePageSize(6)">6 per page</button>
+      <select @change="changePageSize($event.target.value)">
+        <option value="1">1 per page</option>
+        <option value="2">2 per page</option>
+        <option value="3">3 per page</option>
+        <option value="4">4 per page</option>
+        <option value="5">5 per page</option>
+        <option value="6">6 per page</option>
+      </select>
     </div>
     <RouterView :page-size="pageSize"  />
   </div>
 </template>
 
 <style>
-
-nav {
-  padding: 30px;
-}
 
 h2 {
   font-size: 20px;
