@@ -13,9 +13,12 @@ function changePageSize(newPageSize: number) {
 }
 </script>
 
-
+  <!-- Center the content horizontally and vertically -->
+  <!-- Apply 'Droid Sans', 'Helvetica Neue', sans-serif as the font family -->
+  <!-- Set the text color to a dark gray -->
+  <!-- Ensure text is anti-aliased for better readability on screens -->
 <template>
-  <div id="layout">
+  <div class="text-center font-sans text-gray-700 antialiased">
     <header>
       <div id="flashMessage" v-if="message">
         <h4>{{ message }}</h4>
@@ -41,13 +44,6 @@ function changePageSize(newPageSize: number) {
 </template>
 
 <style>
-#layout {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
 nav {
   padding: 30px;
