@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
 import { useMessageStore } from '@/stores/message'
 import { storeToRefs } from 'pinia'
+import { Analytics } from '@vercel/analytics/vue'
 import { SpeedInsights } from '@vercel/speed-insights/vue'
 
 const store = useMessageStore()
@@ -25,6 +26,7 @@ function handlePageSizeChange(event: Event) {
   <!-- Set the text color to a dark gray -->
   <!-- Ensure text is anti-aliased for better readability on screens -->
 <template>
+  <Analytics />
   <SpeedInsights />
   <div class="text-center font-sans text-gray-700 antialiased">
     <header>
