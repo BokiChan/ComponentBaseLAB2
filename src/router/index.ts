@@ -11,6 +11,7 @@ import NetworkErrorView from '@/views/NetworkErrorView.vue'
 import nProgress from 'nprogress'
 import EventService from '@/services/EventService'
 import AddEventView from '@/views/event/EventFormView.vue'
+import AddOrganizationView from '@/views/OrganizationFormView.vue'
 import { useEventStore } from '@/stores/event'
 
 const router = createRouter({
@@ -20,10 +21,10 @@ const router = createRouter({
       path: '/',
       name: 'event-list-view',
       component: EventListView,
-      props: (route) => ({ 
+      props: (route) => ({
         page: parseInt((route.query.page as string) || '1'),
-        pageSize: parseInt((route.query.pageSize as string) || '2')
-})
+        pageSize: parseInt((route.query.pageSize as string) || '2'),
+      }),
     },
     {
       path: '/event/:id',
@@ -36,15 +37,16 @@ const router = createRouter({
         return EventService.getEvent(id)
           .then((response) => {
             eventStore.updateEvent(response.data)
-          }).catch((error) => {
+          })
+          .catch((error) => {
             if (error.response && error.response.status === 404) {
               return {
                 name: '404-resource-view',
-                params: { resource: 'event' }
-              } 
+                params: { resource: 'event' },
+              }
             } else {
               return { name: 'network-error-view' }
-              }
+            }
           })
       },
       children: [
@@ -62,38 +64,44 @@ const router = createRouter({
           path: 'edit',
           name: 'event-edit-view',
           component: EventEditView,
-        }
-      ]
+        },
+      ],
     },
     {
       path: '/about',
       name: 'about',
-      component: AboutView
-    },{
+      component: AboutView,
+    },
+    {
       path: '/add-event',
       name: 'add-event',
-      component: AddEventView
+      component: AddEventView,
+    },
+    {
+      path: '/add-organization',
+      name: 'add-organization',
+      component: AddOrganizationView,
     },
     {
       path: '/404/:resource',
       name: '404-resource-view',
-      component: NotFoundView
+      component: NotFoundView,
     },
     {
       path: '/:catchAll(.*)*',
       name: 'not-found',
-      component: NotFoundView
+      component: NotFoundView,
     },
     {
       path: '/network-error',
       name: 'network-error-view',
-      component: NetworkErrorView
+      component: NetworkErrorView,
     },
     {
       path: '/studentinfo',
       name: 'student-info',
-      component: StudenstInfoView
-    }
+      component: StudenstInfoView,
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -101,7 +109,7 @@ const router = createRouter({
     } else {
       return { top: 0 }
     }
-  }
+  },
 })
 
 router.beforeEach(() => {

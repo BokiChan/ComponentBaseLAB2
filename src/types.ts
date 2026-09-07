@@ -1,30 +1,36 @@
 export interface Event {
-    id: number | null;
-    category: string;
-    title: string;
-    description: string;
-    location: string;
-    date: string;
-    time: string;
-    petsAllowed: boolean;
-    organizer: string;
+  id: number | null
+  category: string
+  title: string
+  description: string
+  location: string
+  date: string
+  time: string
+  petsAllowed: boolean
+  organizer: string
 }
 
 export interface StuInfo {
-    id: number;
-    studentId: string;
-    name: string;
-    surname: string;
-    gpa: number;
-    image: string;
-    penAmount: number;
-    description: string;
+  id: number
+  studentId: string
+  name: string
+  surname: string
+  gpa: number
+  image: string
+  penAmount: number
+  description: string
+}
+
+export interface Organization {
+  id: number | null
+  address: string
+  organizationName: string
 }
 
 export interface MessageState {
-    message: string;
+  message: string
 }
 
 export interface EventState {
-    event: Event | null
+  event: Event | null
 }
