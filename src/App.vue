@@ -21,10 +21,10 @@ function handlePageSizeChange(event: Event) {
 }
 </script>
 
-  <!-- Center the content horizontally and vertically -->
-  <!-- Apply 'Droid Sans', 'Helvetica Neue', sans-serif as the font family -->
-  <!-- Set the text color to a dark gray -->
-  <!-- Ensure text is anti-aliased for better readability on screens -->
+<!-- Center the content horizontally and vertically -->
+<!-- Apply 'Droid Sans', 'Helvetica Neue', sans-serif as the font family -->
+<!-- Set the text color to a dark gray -->
+<!-- Ensure text is anti-aliased for better readability on screens -->
 <template>
   <Analytics />
   <SpeedInsights />
@@ -38,11 +38,13 @@ function handlePageSizeChange(event: Event) {
 
         <nav class="py-6">
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
-          :to="{ name: 'event-list-view' }">Event</RouterLink> | 
+            :to="{ name: 'event-list-view' }">Event</RouterLink> |
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'about' }">About
+          </RouterLink> |
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
-          :to="{ name: 'about' }">About</RouterLink> | 
-          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
-          :to="{ name: 'student-info' }">Student Info</RouterLink>
+            :to="{ name: 'student-info' }">Student Info</RouterLink> |
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'add-event' }">
+            New Event</RouterLink>
         </nav>
       </div>
     </header>
@@ -57,12 +59,11 @@ function handlePageSizeChange(event: Event) {
         <option value="6">6 per page</option>
       </select>
     </div>
-    <RouterView :page-size="pageSize"  />
+    <RouterView :page-size="pageSize" />
   </div>
 </template>
 
 <style>
-
 h2 {
   font-size: 20px;
 }
@@ -74,6 +75,5 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
-  }
-  
+}
 </style>
