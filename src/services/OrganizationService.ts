@@ -1,6 +1,4 @@
 import axios from 'axios'
-import type { Organization } from '@/types'
-
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: false,
@@ -11,7 +9,7 @@ const apiClient = axios.create({
 })
 
 export default {
-  saveOrganization(organization: Organization) {
-    return apiClient.post('/organizers', organization)
-  },
+  getOrganizers() {
+    return apiClient.get('/organizers')
+  }
 }
