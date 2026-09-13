@@ -29,8 +29,8 @@ onMounted(() => {
     OrganizationService.getOrganizers()
         .then((response) => {
             organizers.value = response.data
-        })
-        .catch(() => {
+    })  
+    .catch(() => {
             router.push({ name: 'network-error-view' })
         })
 })
@@ -52,7 +52,7 @@ function saveEvent() {
 }
 </script>
 
-S<template>
+<template>
 
     <div>
         <h1>Create an event</h1>
@@ -67,27 +67,9 @@ S<template>
             <label class="block text-gray-500 font-bold">Location</label>
             <BaseInput v-model="event.location" type="text" label="Location" />
 
-            <label class="block text-gray-500 font-bold">Select an Organizer</label>
-            <div class="relative w-1/4 mb-6 mx-auto">
-
-                <select 
-                    class="h-13 w-full pl-2.5 pr-6 text-xl align-middle appearance-none 
-                    rounded-none border border-gray-400 focus:border-emerald-500 focus:outline-none">
-                    <option 
-                        v-for="option in organizers"
-                        :value="option.id"
-                        :key="option.id"
-                        :selected="option.id === event.organizer.id"
-                        >
-                        {{ option.name }}
-                    </option>
-                </select>
-                <svg
-                    class="pointer-events-none absolute ring-3 top-1/2 -translate-y-1/2
-                    w-2 h-2.5 fill-gray-700" viewBox="0 0 4 5">
-                    <path d="M2 0L0 2h4zm0 5L0 3h4z" />
-                </svg>     
-            </div>
+            <h3>Who is your organizer?</h3>
+            <label >Select an Organizer</label>
+            <BaseSelect v-model="event.organizer.id" :options="organizers" label="Organizer" />
 
             <button class="flex w-fit mx-auto items-center justify-center h-13 px-10
 rounded-md font-semibold whitespace-nowrap border border-gray-400
