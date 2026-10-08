@@ -2,7 +2,7 @@
 import EventCard from '@/components/EventCard.vue'
 import EventMetadata from '@/components/EventMetadata.vue'
 import type { Event } from '@/types'
-import { ref, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import EventService from '@/services/EventService'
 import BaseInput from '@/components/BaseInput.vue'
@@ -32,9 +32,9 @@ const keyword = ref('')
 function updateKeyword() {
   let queryFunction;
   if (keyword.value === '') {
-    queryFunction = EventService.getEvents(3, page.value)
+    queryFunction = EventService.getEvents(1, page.value)
   } else {
-    queryFunction = EventService.getEventByKeyword(keyword.value, 3, page.value)
+    queryFunction = EventService.getEventByKeyword(keyword.value, 1, page.value)
   }
   queryFunction.then((response) => {
     events.value = response.data
@@ -45,18 +45,12 @@ function updateKeyword() {
     router.push({ name: 'network-error-view' })
   })
 }
-watchEffect(() => {
-  events.value = null
-  EventService.getEvents(props.pageSize, page.value)
-    .then((response) => {
-      console.log(response.data)
-      events.value = response.data
-      totalEvent.value = response.headers['x-total-count']
-    })
-    .catch((error) => {
-      console.error('There was an error!', error)
-    })
+onMounted(() => {
+  watchEffect(() => {
+    updateKeyword()
+  })
 })
+
 </script>
 
 <template>
