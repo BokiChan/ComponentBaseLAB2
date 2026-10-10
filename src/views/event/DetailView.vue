@@ -7,11 +7,11 @@ const props = defineProps<{
     event: Event
 }>()
 
-const imageUrls = ref<string[]>([])
 const { event } = toRefs(props)
+const imageUrls = ref<string[]>([])
 
 watch(
-  () => event.value, // or () => props.event
+  () => event.value, // use () => props.event if it's a prop
   async (newEvent) => {
     if (newEvent?.images?.length) {
       imageUrls.value = await EventService.getEventImages(newEvent.images)
@@ -24,8 +24,8 @@ watch(
 </script>
 <template>
     <p>{{ event.time }} on {{ event.date }} @ {{ event.location }}</p>
-  <p>{{ event.description }}</p>
-  <div class="flex flex-row flex-wrap justify-center">
+    <p>{{ event.description }}</p>
+    <div class="flex flex-row flex-wrap justify-center">
     <img
       v-for="image in imageUrls"
       :key="image"

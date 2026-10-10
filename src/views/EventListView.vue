@@ -32,7 +32,7 @@ const keyword = ref('')
 function updateKeyword() {
   let queryFunction;
   if (keyword.value === '') {
-    queryFunction = EventService.getEvents(1, page.value)
+    queryFunction = EventService.getEvents(3, page.value)
   } else {
     queryFunction = EventService.getEventByKeyword(keyword.value, 1, page.value)
   }
