@@ -12,8 +12,9 @@ export interface Event {
 }
 
 export interface Organizer {
-  id: number
+  id: number | null
   name: string
+  image?: string
 }
 
 export interface StuInfo {

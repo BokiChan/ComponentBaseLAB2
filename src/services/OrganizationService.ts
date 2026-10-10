@@ -1,3 +1,4 @@
+import type { Organizer } from '@/types'
 import axios from 'axios'
 const apiClient = axios.create({
   baseURL: import.meta.env.VITE_BACKEND_URL,
@@ -11,5 +12,19 @@ const apiClient = axios.create({
 export default {
   getOrganizers() {
     return apiClient.get('/organizers')
-  }
+  },
+  getOrganizer(id: number) {
+    return apiClient.get<Organizer>('/organizers/' + id)
+  },
+  saveOrganizer(organizer: Organizer) {
+    return apiClient.post('/organizers', organizer)
+  },
+  getImageUrl(key: string) {
+    return apiClient
+      .get<string>('/presignedUrl', {
+        params: { key }, // use the same param name as your EventService.getEventImages
+        responseType: 'text',
+      })
+      .then((response) => response.data)
+  },
 }

@@ -44,7 +44,9 @@ function handlePageSizeChange(event: Event) {
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500"
             :to="{ name: 'student-info' }">Student Info</RouterLink> |
           <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'add-event' }">
-            New Event</RouterLink>
+            New Event</RouterLink> |
+          <RouterLink class="font-bold text-gray-700" exact-active-class="text-green-500" :to="{ name: 'organizer-form-view' }">
+            New Organizer</RouterLink>
         </nav>
       </div>
     </header>
